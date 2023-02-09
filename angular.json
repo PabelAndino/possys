@@ -30,7 +30,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/assets/scss/config/saas/bootstrap.scss",
+              "src/assets/scss/config/saas/app.scss",
+              "src/assets/scss/icons.scss"
             ],
             "scripts": []
           },
@@ -100,5 +102,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "02f19994-092d-4d9c-b8a1-a7d6d223a150"
   }
 }
