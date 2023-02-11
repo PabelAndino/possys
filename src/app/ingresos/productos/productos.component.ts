@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/store/app.reducers';
 
 @Component({
   selector: 'app-productos',
@@ -6,6 +8,6 @@ import { Component } from '@angular/core';
   styles: [
   ]
 })
-export class ProductosComponent {
-
+export class ProductosComponent  {
+  
 }
