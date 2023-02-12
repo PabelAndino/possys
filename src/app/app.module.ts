@@ -12,9 +12,12 @@ import { environment } from 'src/environments/environment.development';
 import { EffectsArray } from './store/effects';
 import { HttpClientModule } from '@angular/common/http';
 
+
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+
   ],
   imports: [
     BrowserModule,

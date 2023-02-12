@@ -56,7 +56,7 @@
                                 <div class="card-body">
 
                                     <div class="search-box d-inline-block mb-2">
-                                        <input type="text" class="form-control search" placeholder="Search...">
+                                        <input type="text" class="form-control search" [(ngModel)]="tableService.searchTerm" placeholder="Search...">
                                         <i class="ri-search-line search-icon"></i>
 
                                     </div>
@@ -64,27 +64,27 @@
 
 
                                     <div class="table-responsive">
-                                        <table class="table table-gridjs">
+                                        <table class="table  table-gridjs  table-striped align-middle">
                                             <thead>
                                                 <tr>
-                                                    <th class="sort" sortable="id">Codigo</th>
-                                                    <th class="sort" sortable="name">Producto</th>
-                                                    <th class="sort" sortable="email">Cantidad</th>
-                                                    <th class="sort" sortable="email">Acciones</th>
+                                                    <th class="sort"  sortable="codigo" (sort)="onSort($event)">Codigo</th>
+                                                    <th class="sort"  sortable="nombre" (sort)="onSort($event)" >Producto</th>
+                                                    <th class="sort"  sortable="categoria" (sort)="onSort($event)" >Categoria</th>
+                                                    <th class="" >Acciones</th>
 
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr *ngFor="let data of productos">
+                                                <tr *ngFor="let data of productosList$ | async  ">
                                                     
-                                                    <td>{{data.id}}</td>
-                                                    <td>{{data.nombre}}</td>
-                                                    <td>xx</td>
+                                                    <td><ngb-highlight [result] = "data.codigo"  [term]="tableService.searchTerm"></ngb-highlight> </td>
+                                                    <td><ngb-highlight [result]="data.nombre" [term]="tableService.searchTerm"></ngb-highlight></td>
+                                                    <td><ngb-highlight [result]="data.categoria.nombre" [term]="tableService.searchTerm"></ngb-highlight></td>
 
-                                                    <td data-column-id="actions" class="gridjs-td">
-                                                        <div class="hstack gap-3 fs-15">
-                                                            <a href="javascript:void(0);" class="link-primary"><i
-                                                                    class=" ri-add-box-line"></i></a>
+                                                    <td  class="">
+                                                        <div class="">
+                                                            <a href="javascript:void(0);" class="btn btn-sm badge-soft-success"><i
+                                                                    class=" bx bx-add-to-queue"></i> Agregar</a>
                                                             <!-- <a href="javascript:void(0);" class="link-danger"><i class="ri-delete-bin-5-line"></i></a> -->
                                                         </div>
                                                     </td>
@@ -182,10 +182,10 @@
                         <table class="table table-gridjs">
                             <thead>
                                 <tr>
-                                    <th class="sort" sortable="id">Codigo</th>
-                                    <th class="sort" sortable="name">Producto</th>
-                                    <th class="sort" sortable="email">Cantidad</th>
-                                    <th class="sort" sortable="email">Acciones</th>
+                                    <th class="sort" >Codigo</th>
+                                    <th class="sort" >Producto</th>
+                                    <th class="sort" >Cantidad</th>
+                                    <th class="sort" >Acciones</th>
                     
                                 </tr>
                             </thead>

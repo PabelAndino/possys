@@ -1,23 +1,30 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DecimalPipe } from '@angular/common';
 import { IngresoComponent } from './ingreso/ingreso.component';
 import { ProductosComponent } from './productos/productos.component';
 import { ProveedoresComponent } from './proveedores/proveedores.component';
-import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap'
+import {NgbDropdownModule, NgbModalModule, NgbPaginationModule, NgbTypeaheadModule} from '@ng-bootstrap/ng-bootstrap'
 import { FormsModule } from '@angular/forms';
+import { SortableDirective } from '../directives/sortable.directive';
 
 
 @NgModule({
   declarations: [
     IngresoComponent,
     ProductosComponent,
-    ProveedoresComponent
+    ProveedoresComponent,
+    SortableDirective,
   ],
   imports: [
     CommonModule,
     NgbModalModule,
-    FormsModule
+    FormsModule,
+    NgbDropdownModule,
+    NgbPaginationModule,
+    NgbTypeaheadModule
+
   ],
+  providers: [DecimalPipe],
   exports:[
     IngresoComponent,
   ]
