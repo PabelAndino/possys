@@ -56,7 +56,8 @@
                                 <div class="card-body">
 
                                     <div class="search-box d-inline-block mb-2">
-                                        <input type="text" class="form-control search" [(ngModel)]="tableService.searchTerm" placeholder="Search...">
+                                        <input type="text" class="form-control search"
+                                            [(ngModel)]="tableService.searchTerm" placeholder="Search...">
                                         <i class="ri-search-line search-icon"></i>
 
                                     </div>
@@ -67,23 +68,30 @@
                                         <table class="table  table-gridjs  table-striped align-middle">
                                             <thead>
                                                 <tr>
-                                                    <th class="sort"  sortable="codigo" (sort)="onSort($event)">Codigo</th>
-                                                    <th class="sort"  sortable="nombre" (sort)="onSort($event)" >Producto</th>
-                                                    <th class="sort"  sortable="categoria" (sort)="onSort($event)" >Categoria</th>
-                                                    <th class="" >Acciones</th>
+                                                    <th class="sort" sortable="codigo" (sort)="onSort($event)">Codigo
+                                                    </th>
+                                                    <th class="sort" sortable="nombre" (sort)="onSort($event)">Producto
+                                                    </th>
+                                                    <th class="sort" sortable="categoria" (sort)="onSort($event)">
+                                                        Categoria</th>
+                                                    <th class="">Acciones</th>
 
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr *ngFor="let data of productosList$ | async  ">
-                                                    
-                                                    <td><ngb-highlight [result] = "data.codigo"  [term]="tableService.searchTerm"></ngb-highlight> </td>
-                                                    <td><ngb-highlight [result]="data.nombre" [term]="tableService.searchTerm"></ngb-highlight></td>
-                                                    <td><ngb-highlight [result]="data.categoria.nombre" [term]="tableService.searchTerm"></ngb-highlight></td>
 
-                                                    <td  class="">
+                                                    <td><ngb-highlight [result]="data.codigo"
+                                                            [term]="tableService.searchTerm"></ngb-highlight> </td>
+                                                    <td><ngb-highlight [result]="data.nombre"
+                                                            [term]="tableService.searchTerm"></ngb-highlight></td>
+                                                    <td><ngb-highlight [result]="data.categoria.nombre"
+                                                            [term]="tableService.searchTerm"></ngb-highlight></td>
+
+                                                    <td class="">
                                                         <div class="">
-                                                            <a href="javascript:void(0);" class="btn btn-sm badge-soft-success"><i
+                                                            <a href="javascript:void(0);"
+                                                                class="btn btn-sm badge-soft-success"><i
                                                                     class=" bx bx-add-to-queue"></i> Agregar</a>
                                                             <!-- <a href="javascript:void(0);" class="link-danger"><i class="ri-delete-bin-5-line"></i></a> -->
                                                         </div>
@@ -128,7 +136,7 @@
         <div class="card">
             <div class="card-header align-items-center d-flex">
                 <h4 class="card-title mb-0 flex-grow-1">Detalles</h4>
-                <div class="flex-shrink-0"> 
+                <div class="flex-shrink-0">
                     <div class="form-check form-switch form-switch-right form-switch-md">
                         <label for="form-grid-showcode" class="form-label text-muted">Haz Algo</label>
                         <input class="form-check-input code-switcher" type="checkbox" id="form-grid-showcode">
@@ -144,8 +152,7 @@
                                 class="ri-shopping-basket-2-line "></i>
                             Agregar Nuevo Produco</button>
                         <button (click)="productoModalOpen(productoModal)" class="btn btn-info" type="button"
-                            data-bs-target="#productoModal" data-bs-toggle="modal"><i
-                                class="ri-user-2-line"></i>
+                            data-bs-target="#productoModal" data-bs-toggle="modal"><i class="ri-user-2-line"></i>
                             Agregar Nuevo
                             Proveedor</button>
                     </div>
@@ -182,11 +189,11 @@
                         <table class="table table-gridjs">
                             <thead>
                                 <tr>
-                                    <th class="sort" >Codigo</th>
-                                    <th class="sort" >Producto</th>
-                                    <th class="sort" >Cantidad</th>
-                                    <th class="sort" >Acciones</th>
-                    
+                                    <th class="sort">Codigo</th>
+                                    <th class="sort">Producto</th>
+                                    <th class="sort">Cantidad</th>
+                                    <th class="sort">Acciones</th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -196,11 +203,12 @@
                                     </td>
                                     <td>
                                     </td>
-                    
-                    
+
+
                                     <td data-column-id="actions" class="gridjs-td">
                                         <div class="hstack gap-3 fs-15">
-                                            <a href="javascript:void(0);" class="link-primary"><i class=" ri-add-box-line"></i></a>
+                                            <a href="javascript:void(0);" class="link-primary"><i
+                                                    class=" ri-add-box-line"></i></a>
                                             <!-- <a href="javascript:void(0);" class="link-danger"><i class="ri-delete-bin-5-line"></i></a> -->
                                         </div>
                                     </td>
@@ -212,25 +220,26 @@
                         <div class="col-sm-12 col-md-5">
                             <div class="dataTables_info mb-2" id="tickets-table_info" role="status" aria-live="polite">
                                 Showing
-                    
+
                                 entries
                             </div>
                         </div>
                         <!-- Pagination -->
                         <div class="col-sm-12 col-md-5">
                             <div class="text-md-right float-md-end gridjs-pagination">
-                    
+
                             </div>
                         </div>
                         <!-- End Pagination -->
                         <div class="row">
                             <div class="col-xxl-3 col-md-12  text-end ">
                                 <div class="">
-                    
-                                    <button (click)="productoModalOpen(productoModal)" class="btn btn-success mx-2" type="button"
-                                        data-bs-target="#productoModal" data-bs-toggle="modal"><i class="ri-shopping-basket-2-line "></i>
+
+                                    <button (click)="productoModalOpen(productoModal)" class="btn btn-success mx-2"
+                                        type="button" data-bs-target="#productoModal" data-bs-toggle="modal"><i
+                                            class="ri-shopping-basket-2-line "></i>
                                         Guardar</button>
-                    
+
                                 </div>
                             </div>
                         </div>
@@ -259,41 +268,41 @@
         <button type="button" class="btn-close" aria-hidden="true"></button>
     </div>
     <div class="modal-body">
-        <form>
+        <form (ngSubmit)="guardarProducto()" [formGroup]="form">
             <div class="row gy-4">
                 <div class="col-xxl-3 col-md-3">
                     <div>
                         <label for="" class="form-label">Código</label>
-                        <input type="text" class="form-control" id="solicitud">
+                        <input type="text" formControlName="codigo" class="form-control" >
                     </div>
                 </div>
                 <div class="col-xxl-3 col-md-3">
                     <div>
                         <label for="" class="form-label">Categoria</label>
-                        <input type="text" class="form-control" id="solicitud">
+                        <input type="number" formControlName="categoria" class="form-control" >
                     </div>
                 </div>
                 <div class="col-xxl-3 col-md-3">
                     <div>
                         <label for="" class="form-label">Nombre Producto</label>
-                        <input type="text" class="form-control" id="solicitud">
+                        <input type="text" formControlName="nombre" class="form-control" >
                     </div>
                 </div>
 
                 <div class="col-xxl-3 col-md-3">
                     <div>
                         <label for="" class="form-label">Cantidad</label>
-                        <input disabled type="text" class="form-control" id="solicitud">
+                        <input type="text" formControlName="cantidad" class="form-control" >
                     </div>
                 </div>
             </div>
 
-
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light">Back</button>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
 
         </form>
     </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-light">Back</button>
-        <button type="button" class="btn btn-primary">Guardar</button>
-    </div>
+
 </ng-template>

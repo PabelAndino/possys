@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { Productos } from '../models/productos.model';
 
 
 @Injectable({
@@ -16,4 +17,10 @@ export class ProductosService {
     .pipe(map((res: any) => res['data']))
 
   }
+
+  saveProductos(productos:Productos){
+    return this.httpClient.post(`${this.url}/api/productos/`, productos)
+      .pipe(map((res: any) => res['data']))
+  }
+
 }
