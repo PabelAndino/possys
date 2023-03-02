@@ -27,11 +27,12 @@ export class ProductosEffects {
     crearProducto$ = createEffect(() =>
         this.actions$.pipe(
             ofType(productosActions.saveProductos),
-            mergeMap((action) =>
-                this.productoService.saveProductos(action.payload).pipe(
+            mergeMap((action) =>{
+                console.log(action.payload)
+             return   this.productoService.saveProductos(action.payload).pipe(
                     map(() => productosActions.saveProductosSuccess()),
                     catchError(error => of(productosActions.saveProductosFail({ payload: error })))
-                )
+                )}
             )
         )
     )

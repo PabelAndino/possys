@@ -65,11 +65,7 @@ export class IngresoComponent implements OnInit {
 
   guardarProducto(){
     console.log(this.form.value)
-    this.store.dispatch(saveProductos(this.form.value))
-    //codigo
-    //categoria
-    //nombre
-    //cantidad
+    this.store.dispatch(saveProductos({payload:this.form.value}))
   }
 
 
