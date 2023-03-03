@@ -300,6 +300,8 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-light">Back</button>
                 <button type="submit" class="btn btn-primary">Guardar</button>
+                <label for="" *ngIf="errorDetails"  class="form-label">{{errorDetails.message | json}}</label>
+                <span for="" *ngIf="error"  class="badge bg-danger">Error</span>
             </div>
 
         </form>

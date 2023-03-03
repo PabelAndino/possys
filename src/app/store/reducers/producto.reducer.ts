@@ -1,19 +1,16 @@
 import { createReducer, Action, on } from '@ngrx/store'
+import { IPayloadError } from 'src/app/constants'
 import { Productos } from "src/app/models/productos.model"
 import { cargandoProductos, cargarProductosFail, cargarProductosSuccess, saveProductos, saveProductosFail, saveProductosSuccess } from '../actions/producto.action'
 
-interface IPayloadError {
-    url: string,
-    name: string,
-    message: string
-}
 
 
 export interface ProductosState {
     productos: Productos[]
     loading: boolean
     success:boolean
-    error: IPayloadError
+    errorDetail: IPayloadError
+    error:boolean
 }
 
 const errorInitState: IPayloadError = {
@@ -26,7 +23,8 @@ export const initialStateProductos: ProductosState = {
     productos: [],
     loading: false,
     success:false,
-    error: errorInitState
+    errorDetail: errorInitState,
+    error:false
 }
 
 const _cargarProductos = createReducer(initialStateProductos,
@@ -34,39 +32,39 @@ const _cargarProductos = createReducer(initialStateProductos,
     on(cargarProductosSuccess, (state, action) => ({
         ...state,
         loading: false,
+        error:false,
         productos: [...action.productos]
     })),
     on(cargarProductosFail, (state, { payload }) => ({
         ...state,
         loading: false,
-        error: {
+        error:true,
+        errorDetail: {
             url: payload.url,
             name: payload.url,
             message: payload.message
         }
-    }))
+    })),
+
+    on(saveProductos, state => ({ ...state, loading: true, success: false })),
+    on(saveProductosSuccess, state => ({ ...state, loading: false, success: true, error: false })),    
+    on(saveProductosFail, (state,  {payload} ) => ({
+        ...state,
+        loading: false,
+        success: false,
+        error: true,
+        errorDetail: {
+            url: 'payload.url',
+            name: 'payload.name',
+            message:  payload.message
+        }
+    })),
+    
+    
 
 )
 
-const _guardarProducto = createReducer(initialStateProductos,
-    on(saveProductos, state =>({ ...state, loading:true })),
-    on(saveProductosSuccess, state =>({...state, loading:false, success:true})),
-    on(saveProductosFail, (state, {payload}) =>({
-        ...state, 
-        loading:false, 
-        success:false,
-        error: {
-            url: payload.url,
-            name: payload.url,
-            message: payload.message
-        }
-    }))    
-    )
 
 export const productosReducer = (state = initialStateProductos, action: Action) => {
     return _cargarProductos(state, action)
-}
-
-export const saveProductosReducer = (state = initialStateProductos, action: Action) => {
-    return _guardarProducto(state, action)
 }

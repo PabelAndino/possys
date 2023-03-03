@@ -19,9 +19,8 @@ export class ProductosService {
   }
 
   saveProductos(productos:Productos){
-    console.log(productos)
     return this.httpClient.post(`${this.url}/api/productos/`, productos)
-      .pipe(map((res: any) => res['data']))
+      .pipe(map((res: any) => res))
   }
 
 }
