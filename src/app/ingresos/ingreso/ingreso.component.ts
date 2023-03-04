@@ -1,9 +1,9 @@
-import { DecimalPipe } from '@angular/common';
-import { AfterContentInit, AfterViewInit, Component, OnDestroy, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+
+import { AfterContentInit, AfterViewInit, Component, OnDestroy, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { select, Store } from '@ngrx/store';
-import { DataTableDirective } from 'angular-datatables';
+
 import { map, Observable, Subject, Subscription } from 'rxjs';
 import { IPayloadError } from 'src/app/constants';
 import { SortableDirective, SortEvent } from 'src/app/directives/sortable.directive';
@@ -12,7 +12,7 @@ import { SearchProductTableService } from 'src/app/services/search.product.table
 import { cargandoProductos, saveProductos } from 'src/app/store/actions';
 import { AppState } from 'src/app/store/app.reducers';
 import Swal from 'sweetalert2';
-import { getError, getErrorDetail } from '../selectors/ingreso.selectors';
+
 
 @Component({
   selector: 'app-ingreso',
@@ -25,15 +25,13 @@ export class IngresoComponent implements OnInit, OnDestroy, AfterViewInit {
 
   //productosList$!: Observable<Productos[]>
   //Datatable data config
-  @ViewChild(DataTableDirective, { static: false })
-  datatableElements!: DataTableDirective
+
 
   productos!: Productos[]
-  dtTrigger: Subject<any> = new Subject()
+
 
 
   error!: any
-  dtOptions: DataTables.Settings = {}
 
   errorDetail: Subscription = new Subscription()
   savedSuccess: boolean = false
@@ -65,13 +63,11 @@ export class IngresoComponent implements OnInit, OnDestroy, AfterViewInit {
       this.productos = productos
       this.savedSuccess = success
 
-      this.dtTrigger.next(null)
-
 
       if (error) {
         Swal.fire({
           icon: 'error',
-          title: 'No se pudo guardar el producto',
+          title: 'Error al proceder con la accion con productos',
           text: `${JSON.stringify(errorDetail.message)}`
         })
       }
@@ -87,17 +83,6 @@ export class IngresoComponent implements OnInit, OnDestroy, AfterViewInit {
     })
 
 
-    this.dtOptions = {
-      language: {
-        url: '//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json'
-      },
-      pagingType: 'full_numbers',
-      pageLength: 5,
-      processing: true,
-      deferRender: true,
-      destroy: true
-    }
-
   }
 
 
@@ -108,7 +93,7 @@ export class IngresoComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnDestroy(): void {
     this.errorDetail.unsubscribe()
-    this.dtTrigger.unsubscribe();
+
   }
 
   productoModalOpen(data: any) {
@@ -137,16 +122,6 @@ export class IngresoComponent implements OnInit, OnDestroy, AfterViewInit {
 
   }
 
-  recargarTable() {
-    this.datatableElements.dtInstance.then((dtInstance: DataTables.Api) => {
-      dtInstance.destroy()
-     
-    })
-    setTimeout(() => {
-      this.dtTrigger.next(null);
-
-    });
-  }
 
   verifyField(field: string) {
     return this.productForm.controls[field].touched && this.productForm.controls[field].errors

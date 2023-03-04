@@ -2267,6 +2267,13 @@
   resolved "https://registry.yarnpkg.com/@socket.io/component-emitter/-/component-emitter-3.1.0.tgz#96116f2a912e0c02817345b3c10751069920d553"
   integrity sha512-+9jVqKhRSpsc591z5vX+X5Yyw+he/HCB4iQ/RYxw35CEPaY1gnsNE43nf9n9AaYjAQrTiI/mOwKUKdUs9vf7Xg==
 
+"@swimlane/ngx-datatable@^20.1.0":
+  version "20.1.0"
+  resolved "https://registry.yarnpkg.com/@swimlane/ngx-datatable/-/ngx-datatable-20.1.0.tgz#0f69552e6f2d0d68508165fcf9150a5f4a458253"
+  integrity sha512-oHnnx1QRNmv10l5UME13v5JP3M3GesM9K3QH6TRYo2C7UbbhY7vL5EZ4HGqcvtMMW4FOzqNOSltE++IVL99F3g==
+  dependencies:
+    tslib "^2.0.0"
+
 "@tootallnate/once@2":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@tootallnate/once/-/once-2.0.0.tgz#f544a148d3ab35801c1f633a7441fd87c2e484bf"
@@ -2313,13 +2320,6 @@
   integrity sha512-RG8AStHlUiV5ysZQKq97copd2UmVYw3/pRMLefISZ3S1hK104Cwm7iLQ3fTKx+lsUH2CE8FlLaYeEA2LSeqYUA==
   dependencies:
     "@types/node" "*"
-
-"@types/datatables.net@^1.10.24":
-  version "1.10.24"
-  resolved "https://registry.yarnpkg.com/@types/datatables.net/-/datatables.net-1.10.24.tgz#8b432218d72b012448dbf18ce18ee900a3f2f1ec"
-  integrity sha512-Qb82/7Gn0bU36YLiv0MdaqKzhTLfRO9qPvFdkW0miQ6ATMG47aoPn2r//zTvGd3oPSt+Lzp1HSsjP6rZRuki8g==
-  dependencies:
-    "@types/jquery" "*"
 
 "@types/eslint-scope@^3.7.3":
   version "3.7.4"
@@ -2378,13 +2378,6 @@
   resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-4.3.1.tgz#2d8ab5601c2fe7d9673dcb157e03f128ab5c5fff"
   integrity sha512-Vu8l+UGcshYmV1VWwULgnV/2RDbBaO6i2Ptx7nd//oJPIZGhoI1YLST4VKagD2Pq/Bc2/7zvtvhM7F3p4SN7kQ==
 
-"@types/jquery@*", "@types/jquery@^3.5.16":
-  version "3.5.16"
-  resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-3.5.16.tgz#632131baf30951915b0317d48c98e9890bdf051d"
-  integrity sha512-bsI7y4ZgeMkmpG9OM710RRzDFp+w4P1RGiIt30C1mSBT+ExCleeh4HObwgArnDFELmRrOpXgSYN9VF1hj+f1lw==
-  dependencies:
-    "@types/sizzle" "*"
-
 "@types/json-schema@*", "@types/json-schema@^7.0.8", "@types/json-schema@^7.0.9":
   version "7.0.11"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.11.tgz#d421b6c527a3037f7c84433fd2c4229e016863d3"
@@ -2434,11 +2427,6 @@
   dependencies:
     "@types/mime" "*"
     "@types/node" "*"
-
-"@types/sizzle@*":
-  version "2.3.3"
-  resolved "https://registry.yarnpkg.com/@types/sizzle/-/sizzle-2.3.3.tgz#ff5e2f1902969d305225a047c8a0fd5c915cebef"
-  integrity sha512-JYM8x9EGF163bEyhdJBpR2QX1R5naCJHC8ucJylJ3w9/CVBaskdQ8WqBf8MmQrd1kRvp/a4TS8HJ+bxzR7ZJYQ==
 
 "@types/sockjs@^0.3.33":
   version "0.3.33"
@@ -2695,11 +2683,6 @@ angular-archwizard@^7.0.0:
   integrity sha512-2yLRWGOjNx4U++awtEmaHmJyJANQ8gUlBHbH4fWHJ0V16gT0SOiM+tg1L2Tpfg+RvFkz02+MltJichJvFwce5w==
   dependencies:
     tslib "^2.0.0"
-
-angular-datatables@^15.0.0:
-  version "15.0.0"
-  resolved "https://registry.yarnpkg.com/angular-datatables/-/angular-datatables-15.0.0.tgz#947e65a94b1a318e9e4dd178685190f84c64ac10"
-  integrity sha512-tmg3Q6w5h6p1KBlNHqPhKKGvzbGwFDT9RZGXw1pZXGYMiP9Mb1Y4cRPq6so244RLwzDQdlnsC1jsLwP3vzoIdw==
 
 angular@^1.8.3:
   version "1.8.3"
@@ -3387,21 +3370,6 @@ custom-event@~1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/custom-event/-/custom-event-1.0.1.tgz#5d02a46850adf1b4a317946a3928fccb5bfd0425"
   integrity sha512-GAj5FOq0Hd+RsCGVJxZuKaIDXDf3h6GQoNEjFgbLLI/trgtavwUbSnZ5pVfg27DVCaWjIohryS0JFwIJyT2cMg==
-
-datatables.net-dt@^1.13.3:
-  version "1.13.3"
-  resolved "https://registry.yarnpkg.com/datatables.net-dt/-/datatables.net-dt-1.13.3.tgz#8f230f0f749b8df0539f84361cf15d76278e4f95"
-  integrity sha512-cyJP7a+cGkJmv/NvF6ypoiibN67MIbdsoSqiMl4wxpmIkN8VF0i0jXw5WzRIpE70o/wsiLWantmoNRf+A7+uiw==
-  dependencies:
-    datatables.net ">=1.12.1"
-    jquery ">=1.7"
-
-datatables.net@>=1.12.1, datatables.net@^1.13.3:
-  version "1.13.3"
-  resolved "https://registry.yarnpkg.com/datatables.net/-/datatables.net-1.13.3.tgz#ee7d7b16b479b5075412b104d980184693b4325b"
-  integrity sha512-YVnz02oJsaP/OfnclBlqHkuV1il60sSVa+a0Xvs5gyiDLftmAxc+rvVAwCm7O0OpKo09N43k6EcCAf3L9WYI7g==
-  dependencies:
-    jquery ">=1.7"
 
 datatables@^1.10.18:
   version "1.10.18"
@@ -4562,7 +4530,7 @@ jest-worker@^27.4.5:
     merge-stream "^2.0.0"
     supports-color "^8.0.0"
 
-jquery@>=1.7, jquery@^3.6.3:
+jquery@>=1.7:
   version "3.6.3"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.6.3.tgz#23ed2ffed8a19e048814f13391a19afcdba160e6"
   integrity sha512-bZ5Sy3YzKo9Fyc8wH2iIQK4JImJ6R0GWI9kL1/k7Z91ZBNgkRXE6U0JfHIizZbort8ZunhSI3jw9I6253ahKfg==

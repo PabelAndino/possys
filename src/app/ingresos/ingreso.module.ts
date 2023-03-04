@@ -6,7 +6,8 @@ import { ProveedoresComponent } from './proveedores/proveedores.component';
 import {NgbDropdownModule, NgbModalModule, NgbPaginationModule, NgbTypeaheadModule} from '@ng-bootstrap/ng-bootstrap'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SortableDirective } from '../directives/sortable.directive';
-import {DataTablesModule} from 'angular-datatables'
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+
 
 
 @NgModule({
@@ -24,7 +25,7 @@ import {DataTablesModule} from 'angular-datatables'
     NgbPaginationModule,
     NgbTypeaheadModule,
     ReactiveFormsModule,
-    DataTablesModule
+    NgxDatatableModule
 
   ],
   providers: [DecimalPipe],
