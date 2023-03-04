@@ -29,12 +29,8 @@ export class ProductosEffects {
             ofType(productosActions.saveProductos),
             mergeMap((action) =>
                 this.productoService.saveProductos(action.payload).pipe(
-                    map(({ error, detail })=>
-                         productosActions.saveProductosFail({ payload: {url:'',name:'',message:detail} })
-
+                    map(({ error, detail }) => error ? productosActions.saveProductosFail({ payload: detail }) : productosActions.saveProductosSuccess()
                     ),
-                   /*  map(({ error, detail }) => error ? productosActions.saveProductosFail({ payload: detail }) : productosActions.saveProductosSuccess() 
-                    ), */
                     catchError(error => of(productosActions.saveProductosFail({ payload: error })))
                 )
             )

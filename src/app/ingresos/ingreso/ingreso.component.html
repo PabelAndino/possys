@@ -55,16 +55,57 @@
 
                                 <div class="card-body">
 
-                                    <div class="search-box d-inline-block mb-2">
+                                    <!-- <div class="search-box d-inline-block mb-2">
                                         <input type="text" class="form-control search"
                                             [(ngModel)]="tableService.searchTerm" placeholder="Search...">
                                         <i class="ri-search-line search-icon"></i>
 
-                                    </div>
+                                    </div> -->
 
+                                    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+                                        class="table  table-gridjs  table-striped align-middle">
+                                        <thead>
+                                            <tr>
+                                                <th class="sort">Codigo
+                                                </th>
+                                                <th class="sort">Producto
+                                                </th>
+                                                <th class="sort">
+                                                    Categoria</th>
 
+                                                <th>Acciones</th>
 
-                                    <div class="table-responsive">
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <tr *ngFor="let data of productos">
+
+                                                <td>{{data.codigo}}</td>
+                                                <td>{{data.nombre}}</td>
+                                                <td>{{data.categoria.nombre}}</td>
+                                                <td><div class="">
+                                                    <a href="#" class="btn btn-sm badge-soft-success"><i class=" bx bx-add-to-queue"></i> Agregar</a>
+                                                
+                                                </div></td>
+                                            </tr>
+                                            <!-- <tr *ngFor="let data of productosList$ | async  ">
+                                                <td><ngb-highlight [result]="data.codigo" [term]="tableService.searchTerm"></ngb-highlight> </td>
+                                                <td><ngb-highlight [result]="data.nombre" [term]="tableService.searchTerm"></ngb-highlight></td>
+                                                <td><ngb-highlight [result]="data.categoria.nombre" [term]="tableService.searchTerm"></ngb-highlight></td>
+                                                
+                                                <td class="">
+                                                    <div class="">
+                                                        <a href="javascript:void(0);" class="btn btn-sm badge-soft-success"><i class=" bx bx-add-to-queue"></i>
+                                                            Agregar</a>
+                                                
+                                                    </div>
+                                                </td>
+                                            </tr> -->
+                                        </tbody>
+                                    </table>
+
+                                    <!-- <div class="table-responsive">
                                         <table class="table  table-gridjs  table-striped align-middle">
                                             <thead>
                                                 <tr>
@@ -93,7 +134,7 @@
                                                             <a href="javascript:void(0);"
                                                                 class="btn btn-sm badge-soft-success"><i
                                                                     class=" bx bx-add-to-queue"></i> Agregar</a>
-                                                            <!-- <a href="javascript:void(0);" class="link-danger"><i class="ri-delete-bin-5-line"></i></a> -->
+                                                            
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -105,18 +146,18 @@
                                             <div class="dataTables_info mb-2" id="tickets-table_info" role="status"
                                                 aria-live="polite">
                                                 Showing
-
+                                                
                                                 entries
                                             </div>
                                         </div>
                                         <!-- Pagination -->
-                                        <div class="col-sm-12 col-md-5">
+                                    <!-- <div class="col-sm-12 col-md-5">
                                             <div class="text-md-right float-md-end gridjs-pagination">
 
                                             </div>
-                                        </div>
-                                        <!-- End Pagination -->
-                                    </div>
+                                        </div> -->
+                                    <!-- End Pagination -->
+                                    <!-- </div>  -->
                                 </div><!-- end card-body -->
                             </div><!-- end card -->
                         </div>
@@ -268,39 +309,42 @@
         <button type="button" class="btn-close" aria-hidden="true"></button>
     </div>
     <div class="modal-body">
-        <form (ngSubmit)="guardarProducto()" [formGroup]="form">
+        <form (ngSubmit)="guardarProducto()" [formGroup]="productForm">
             <div class="row gy-4">
                 <div class="col-xxl-3 col-md-3">
                     <div>
                         <label for="" class="form-label">Código</label>
-                        <input type="text" formControlName="codigo" class="form-control">
+                        <input type="text" formControlName="codigo" name="codigo" class="form-control">
+                        <span *ngIf="verifyField('codigo')" class="form-text text-danger">
+                            Debe de ser de 3 letras y no estar vacïo</span>
                     </div>
                 </div>
                 <div class="col-xxl-3 col-md-3">
                     <div>
                         <label for="" class="form-label">Categoria</label>
-                        <input type="number" formControlName="categoria" class="form-control">
+                        <input type="number" formControlName="categoria" name="categoria" class="form-control">
                     </div>
                 </div>
                 <div class="col-xxl-3 col-md-3">
                     <div>
                         <label for="" class="form-label">Nombre Producto</label>
-                        <input type="text" formControlName="nombre" class="form-control">
+                        <input type="text" formControlName="nombre" name="nombre" class="form-control">
                     </div>
                 </div>
 
                 <div class="col-xxl-3 col-md-3">
                     <div>
                         <label for="" class="form-label">Cantidad</label>
-                        <input type="text" formControlName="cantidad" class="form-control">
+                        <input type="number" formControlName="cantidad" name="cantidad" class="form-control">
                     </div>
                 </div>
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-light">Back</button>
-                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button [disabled]="productForm.invalid" type="submit" class="btn btn-success">Guardar</button>
+                <button (click)="recargarTable()" type="button" class="btn btn-success">Reacrgar</button>
             </div>
+
 
         </form>
     </div>
