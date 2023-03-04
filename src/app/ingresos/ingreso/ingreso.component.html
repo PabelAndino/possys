@@ -273,26 +273,26 @@
                 <div class="col-xxl-3 col-md-3">
                     <div>
                         <label for="" class="form-label">Código</label>
-                        <input type="text" formControlName="codigo" class="form-control" >
+                        <input type="text" formControlName="codigo" class="form-control">
                     </div>
                 </div>
                 <div class="col-xxl-3 col-md-3">
                     <div>
                         <label for="" class="form-label">Categoria</label>
-                        <input type="number" formControlName="categoria" class="form-control" >
+                        <input type="number" formControlName="categoria" class="form-control">
                     </div>
                 </div>
                 <div class="col-xxl-3 col-md-3">
                     <div>
                         <label for="" class="form-label">Nombre Producto</label>
-                        <input type="text" formControlName="nombre" class="form-control" >
+                        <input type="text" formControlName="nombre" class="form-control">
                     </div>
                 </div>
 
                 <div class="col-xxl-3 col-md-3">
                     <div>
                         <label for="" class="form-label">Cantidad</label>
-                        <input type="text" formControlName="cantidad" class="form-control" >
+                        <input type="text" formControlName="cantidad" class="form-control">
                     </div>
                 </div>
             </div>
@@ -300,8 +300,6 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-light">Back</button>
                 <button type="submit" class="btn btn-primary">Guardar</button>
-                <label for="" *ngIf="errorDetails"  class="form-label">{{errorDetails.message | json}}</label>
-                <span for="" *ngIf="error"  class="badge bg-danger">Error</span>
             </div>
 
         </form>

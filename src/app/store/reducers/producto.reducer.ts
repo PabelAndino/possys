@@ -54,8 +54,8 @@ const _cargarProductos = createReducer(initialStateProductos,
         success: false,
         error: true,
         errorDetail: {
-            url: 'payload.url',
-            name: 'payload.name',
+            url: '',
+            name: '',
             message:  payload.message
         }
     })),

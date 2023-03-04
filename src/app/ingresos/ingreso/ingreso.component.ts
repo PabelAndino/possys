@@ -56,6 +56,13 @@ export class IngresoComponent implements OnInit, OnDestroy {
     this.store.select('productos').subscribe(({ errorDetail, error }) => {
        this.errorDetails = errorDetail
        this.error = error
+       if(error){
+         Swal.fire({
+           icon: 'error',
+           title: 'No se pudo guardar el producto',
+           text: `${JSON.stringify(errorDetail.message)}`
+         })
+       }
     })
     
   }
@@ -86,19 +93,14 @@ export class IngresoComponent implements OnInit, OnDestroy {
 
   guardarProducto() {
     this.store.dispatch(saveProductos({ payload: this.form.value }))
-    let message = this.errorDetails
-    console.log(message, 'message')
-
-    /*  if(!this.error$){
-       this.store.dispatch(cargandoProductos())
-     }else{
-       Swal.fire({
-         icon:'error',
-         title:'No se pudo guardar el producto',
-         text: `${this.errorDetails$}`
-       })
-     } */
   }
 
+  showError(error:any){
+    Swal.fire({
+      icon: 'error',
+      title: 'No se pudo guardar el producto',
+      text: error
+    })
+  }
 
 }
