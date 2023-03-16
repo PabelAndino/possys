@@ -26,6 +26,7 @@
     "@ngrx/store": "^15.2.1",
     "@ngrx/store-devtools": "^15.2.1",
     "@swimlane/ngx-datatable": "^20.1.0",
+    "@types/file-saver": "^2.0.5",
     "angular": "^1.8.3",
     "angular-archwizard": "^7.0.0",
     "bootstrap": "^5.2.3",
@@ -41,6 +42,7 @@
     "simplebar-angular": "^3.2.0",
     "sweetalert2": "^11.7.1",
     "tslib": "^2.3.0",
+    "xlsx": "^0.18.5",
     "zone.js": "~0.12.0"
   },
   "devDependencies": {

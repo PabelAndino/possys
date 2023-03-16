@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { select, Store } from '@ngrx/store';
 import { Table } from 'primeng/table';
+import * as FileSaver from 'file-saver';
 
 import { map, Observable, Subject, Subscription } from 'rxjs';
 import { IPayloadError } from 'src/app/constants';
@@ -13,6 +14,7 @@ import { SearchProductTableService } from 'src/app/services/search.product.table
 import { cargandoProductos, saveProductos } from 'src/app/store/actions';
 import { AppState } from 'src/app/store/app.reducers';
 import Swal from 'sweetalert2';
+
 
 
 @Component({
@@ -28,7 +30,7 @@ export class IngresoComponent implements OnInit, OnDestroy, AfterViewInit {
 
   //productosList$!: Observable<Productos[]>
   //Datatable data config
-  @ViewChild('dt') table!: Table;
+
 
 
   productos!: Productos[]
@@ -95,12 +97,21 @@ export class IngresoComponent implements OnInit, OnDestroy, AfterViewInit {
       }
 
       if (this.savedSuccess) {
-
+        /* Hacer un dispatch de cargar productos */
+        
         Swal.fire({
           icon: 'success',
           title: 'Guardado Correctamente',
           text: `Producto Guardo correctamente`
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.store.dispatch(cargandoProductos())
+          } else if (result.isDenied) {
+            Swal.fire('Changes are not saved', '', 'info')
+          }
         })
+
+
       }
     })
 
@@ -149,6 +160,23 @@ export class IngresoComponent implements OnInit, OnDestroy, AfterViewInit {
     return this.productForm.controls[field].touched && this.productForm.controls[field].errors
   }
 
+  exportExcel() {
+    import("xlsx").then(xlsx => {
+      const worksheet = xlsx.utils.json_to_sheet(this.productos);
+      const workbook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
+      const excelBuffer: any = xlsx.write(workbook, { bookType: 'xlsx', type: 'array' });
+      this.saveAsExcelFile(excelBuffer, "products");
+    });
+  }
+
+  saveAsExcelFile(buffer: any, fileName: string): void {
+    let EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+    let EXCEL_EXTENSION = '.xlsx';
+    const data: Blob = new Blob([buffer], {
+      type: EXCEL_TYPE
+    });
+    FileSaver.saveAs(data, fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION);
+  }
 
 }
 

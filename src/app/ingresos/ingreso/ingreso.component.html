@@ -73,7 +73,7 @@
                                     dataKey="codigo"
                                     [tableStyle]="{'min-width': '30rem'}"
                                     styleClass="p-datatable-sm"  
-                                    [value]="productos" [rows]="5" 
+                                    [value]="productos" [rows]="10" 
                                     [showCurrentPageReport]="true" 
                                     [rowsPerPageOptions]="[10,25,50]"  
                                     [paginator]="true" 
@@ -90,11 +90,21 @@
                                                         placeholder="Global Search" /> -->
                                                 </span>
                                             </div>
+                                            <div class="flex">
+                                                <button class="btn btn-primary" type="button" pButton pRipple  (click)="exportExcel()"  pTooltip="CSV"
+                                                    tooltipPosition="bottom"><i class="pi pi-file"></i></button>
+                                               <!--  <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()" class="p-button-success mr-2"
+                                                    pTooltip="XLS" tooltipPosition="bottom"></button>
+                                                <button type="button" pButton pRipple icon="pi pi-file-pdf" (click)="exportPdf()" class="p-button-warning mr-2"
+                                                    pTooltip="PDF" tooltipPosition="bottom"></button>
+                                                <button type="button" pButton pRipple icon="pi pi-filter" (click)="dt.exportCSV({selectionOnly:true})"
+                                                    class="p-button-info ml-auto" pTooltip="Selection Only" tooltipPosition="bottom"></button> -->
+                                            </div>
                                         </ng-template>
 
                                         <ng-template pTemplate="header">
                                             <tr>
-                                                <th *ngFor="let col of cols">
+                                                <th *ngFor="let col of cols" class="sort">
                                                     {{col.header}}
                                                 </th>
                                         

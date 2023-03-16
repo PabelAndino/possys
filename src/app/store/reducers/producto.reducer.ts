@@ -28,7 +28,7 @@ export const initialStateProductos: ProductosState = {
 }
 
 const _cargarProductos = createReducer(initialStateProductos,
-    on(cargandoProductos, state => ({ ...state, loading: true })),
+    on(cargandoProductos, state => ({ ...state, loading: true, success: false })),
     on(cargarProductosSuccess, (state, action) => ({
         ...state,
         loading: false,
