@@ -7,6 +7,9 @@ import {NgbDropdownModule, NgbModalModule, NgbPaginationModule, NgbTypeaheadModu
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SortableDirective } from '../directives/sortable.directive';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import {TableModule}  from 'primeng/table'
+
+
 
 
 
@@ -25,7 +28,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     NgbPaginationModule,
     NgbTypeaheadModule,
     ReactiveFormsModule,
-    NgxDatatableModule
+    NgxDatatableModule,
+    TableModule
 
   ],
   providers: [DecimalPipe],

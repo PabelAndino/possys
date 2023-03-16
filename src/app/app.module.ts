@@ -11,6 +11,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment.development';
 import { EffectsArray } from './store/effects';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+
+
 
 
 
@@ -25,6 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     IngresoModule,
     StoreModule.forRoot(appReducer),
+
+
     EffectsModule.forRoot(EffectsArray),
     StoreDevtoolsModule.instrument({
       maxAge: 25,

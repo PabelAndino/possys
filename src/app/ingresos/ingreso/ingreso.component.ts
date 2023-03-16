@@ -1,8 +1,9 @@
 
-import { AfterContentInit, AfterViewInit, Component, OnDestroy, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, OnDestroy, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { select, Store } from '@ngrx/store';
+import { Table } from 'primeng/table';
 
 import { map, Observable, Subject, Subscription } from 'rxjs';
 import { IPayloadError } from 'src/app/constants';
@@ -18,17 +19,38 @@ import Swal from 'sweetalert2';
   selector: 'app-ingreso',
   templateUrl: './ingreso.component.html',
 
-  styles: [
-  ]
+  styleUrls: 
+     [ './ingreso.component.scss'
+]
+  
 })
 export class IngresoComponent implements OnInit, OnDestroy, AfterViewInit {
 
   //productosList$!: Observable<Productos[]>
   //Datatable data config
+  @ViewChild('dt') table!: Table;
 
 
   productos!: Productos[]
 
+  columns = [
+    {
+      prop: 'codigo'
+    },
+    {
+      prop: 'nombre'
+    },
+    {
+      prop: 'categoria.nombre',
+      name: 'Categoria'
+    }
+  ]
+
+  cols = [
+    { field: 'codigo', header: 'Codigo' },
+    { field: 'nombre', header: 'Nombre' },
+    { field: 'categoria', header: 'Categoria' },
+  ]
 
 
   error!: any
@@ -73,7 +95,7 @@ export class IngresoComponent implements OnInit, OnDestroy, AfterViewInit {
       }
 
       if (this.savedSuccess) {
-        
+
         Swal.fire({
           icon: 'success',
           title: 'Guardado Correctamente',
@@ -126,6 +148,7 @@ export class IngresoComponent implements OnInit, OnDestroy, AfterViewInit {
   verifyField(field: string) {
     return this.productForm.controls[field].touched && this.productForm.controls[field].errors
   }
+
 
 }
 
